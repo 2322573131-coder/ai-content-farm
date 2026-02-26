@@ -1,0 +1,53 @@
+name: 🤖 AI内容农场每日自动化
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天UTC 00:00 (北京08:00)
+  workflow_dispatch:
+
+jobs:
+  automate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: 🐍 设置Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: 📝 生成每日报告
+      run: |
+        python3 automation.py
+        echo "✅ 报告生成完成"
+    
+    - name: 📤 提交更新
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "🤖 每日自动更新: $(date '+%Y-%m-%d %H:%M:%S')" || echo "无更改"
+        git push
+    
+    - name: 🚀 部署到GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        publish_branch: gh-pages
+    
+    - name: 🎉 完成通知
+      run: |
+        echo "========================================"
+        echo "🎉 AI内容农场 - 每日自动化完成!"
+        echo "========================================"
+        echo "📅 时间: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "🌐 网站: https://$(echo '${{ github.repository }}' | cut -d'/' -f1).github.io/$(echo '${{ github.repository }}' | cut -d'/' -f2)/"
+        echo "💰 收入: 今日已更新"
+        echo "📱 报告: 查看reports/目录"
+        echo "⏰ 下次: 明日08:00"
+        echo "========================================"
