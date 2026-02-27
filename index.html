@@ -431,7 +431,7 @@
         </div>
 
         <div class="bg-white rounded-2xl shadow-xl overflow-x-auto p-6">
-            <table class="w-full min-w-[800px]">
+            <table class="w-full min-w-[1000px]">
                 <thead>
                     <tr class="bg-gray-50 text-left">
                         <th class="py-4 px-4 font-bold text-gray-700">工具名称</th>
@@ -439,60 +439,110 @@
                         <th class="py-4 px-4 font-bold text-gray-700">价格</th>
                         <th class="py-4 px-4 font-bold text-gray-700">易用性</th>
                         <th class="py-4 px-4 font-bold text-gray-700">性价比</th>
+                        <th class="py-4 px-4 font-bold text-gray-700">国内可用</th>
                         <th class="py-4 px-4 font-bold text-gray-700">推荐指数</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
+                    <!-- 国外工具 -->
                     <tr class="hover:bg-gray-50">
                         <td class="py-4 px-4 font-medium">ChatGPT Plus</td>
-                        <td class="py-4 px-4 text-gray-600">全能，啥都能干</td>
+                        <td class="py-4 px-4 text-gray-600">全能对话AI，多模态</td>
                         <td class="py-4 px-4 text-gray-600">$20/月</td>
-                        <td class="py-4 px-4">
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </td>
-                        <td class="py-4 px-4">
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-red-500 font-medium">❌</td>
                         <td class="py-4 px-4 font-bold text-green-600">强烈推荐</td>
                     </tr>
                     <tr class="hover:bg-gray-50">
-                        <td class="py-4 px-4 font-medium">Midjourney</td>
-                        <td class="py-4 px-4 text-gray-600">AI绘画/图像生成</td>
-                        <td class="py-4 px-4 text-gray-600">$10-60/月</td>
-                        <td class="py-4 px-4">
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                            </div>
-                        </td>
-                        <td class="py-4 px-4">
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                            </div>
-                        </td>
-                        <td class="py-4 px-4 font-bold text-green-600">按需选择</td>
+                        <td class="py-4 px-4 font-medium">Claude 3 Opus</td>
+                        <td class="py-4 px-4 text-gray-600">长文档处理，200K上下文</td>
+                        <td class="py-4 px-4 text-gray-600">$20/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-red-500 font-medium">❌</td>
+                        <td class="py-4 px-4 font-bold text-green-600">专业推荐</td>
                     </tr>
                     <tr class="hover:bg-gray-50">
-                        <td class="py-4 px-4 font-medium">Claude 3 Opus</td>
-                        <td class="py-4 px-4 text-gray-600">长文档处理/安全</td>
+                        <td class="py-4 px-4 font-medium">Gemini Advanced</td>
+                        <td class="py-4 px-4 text-gray-600">谷歌多模态，实时搜索</td>
                         <td class="py-4 px-4 text-gray-600">$20/月</td>
-                        <td class="py-4 px-4">
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </td>
-                        <td class="py-4 px-4">
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                            </div>
-                        </td>
-                        <td class="py-4 px-4 font-bold text-green-600">专业推荐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-red-500 font-medium">❌</td>
+                        <td class="py-4 px-4 font-bold text-blue-600">值得尝试</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 px-4 font-medium">Perplexity</td>
+                        <td class="py-4 px-4 text-gray-600">AI搜索引擎，实时联网</td>
+                        <td class="py-4 px-4 text-gray-600">$20/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-red-500 font-medium">❌</td>
+                        <td class="py-4 px-4 font-bold text-green-600">搜索首选</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 px-4 font-medium">Midjourney V6</td>
+                        <td class="py-4 px-4 text-gray-600">AI图像生成，质量最高</td>
+                        <td class="py-4 px-4 text-gray-600">$10-60/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-red-500 font-medium">❌</td>
+                        <td class="py-4 px-4 font-bold text-green-600">设计首选</td>
+                    </tr>
+                    <!-- 国内工具 -->
+                    <tr class="hover:bg-gray-50 bg-blue-50/50">
+                        <td class="py-4 px-4 font-medium">文心一言4.0</td>
+                        <td class="py-4 px-4 text-gray-600">百度大模型，多模态</td>
+                        <td class="py-4 px-4 text-gray-600">¥59.9/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-green-600 font-medium">✅</td>
+                        <td class="py-4 px-4 font-bold text-green-600">国内首选</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-blue-50/50">
+                        <td class="py-4 px-4 font-medium">通义千问</td>
+                        <td class="py-4 px-4 text-gray-600">阿里大模型，长上下文</td>
+                        <td class="py-4 px-4 text-gray-600">¥39.9/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-green-600 font-medium">✅</td>
+                        <td class="py-4 px-4 font-bold text-blue-600">值得尝试</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-blue-50/50">
+                        <td class="py-4 px-4 font-medium">豆包4.0</td>
+                        <td class="py-4 px-4 text-gray-600">字节大模型，生态丰富</td>
+                        <td class="py-4 px-4 text-gray-600">¥29.9/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-green-600 font-medium">✅</td>
+                        <td class="py-4 px-4 font-bold text-blue-600">值得尝试</td>
+                    </tr>
+                    <!-- 垂直工具 -->
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 px-4 font-medium">GitHub Copilot</td>
+                        <td class="py-4 px-4 text-gray-600">AI编程助手，IDE集成</td>
+                        <td class="py-4 px-4 text-gray-600">$10/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-yellow-600 font-medium">部分可用</td>
+                        <td class="py-4 px-4 font-bold text-green-600">开发者必备</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 px-4 font-medium">GrammarlyGO</td>
+                        <td class="py-4 px-4 text-gray-600">英语写作助手，语法检查</td>
+                        <td class="py-4 px-4 text-gray-600">$12/月</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4">⭐⭐⭐⭐</td>
+                        <td class="py-4 px-4 text-yellow-600 font-medium">部分可用</td>
+                        <td class="py-4 px-4 font-bold text-green-600">写作必备</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        
+        <div class="mt-4 text-sm text-gray-500 text-center">
+            注：✅ 国内直接访问 | ❌ 需要科学上网 | 我们会持续更新更多工具的对比
         </div>
     </section>
 
