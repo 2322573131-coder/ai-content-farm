@@ -328,7 +328,7 @@
             <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight heading-font animate-fade-in">
                     找到<span class="text-yellow-300">最适合你</span>的<br>
-                    <span class="gradient-text">AI工具</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 drop-shadow-lg">AI工具</span>
                 </h1>
                 <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.2s">
                     我们通过<span class="font-bold text-yellow-300">可视化评测</span>和<span class="font-bold text-yellow-300">图形化对比</span>，<br>
@@ -444,23 +444,29 @@
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <!-- 左侧：雷达图 -->
                             <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
                                     <i class="fas fa-radar mr-3 text-primary-600"></i>
                                     能力雷达图
                                 </h4>
-                                <div class="bg-gray-50 rounded-2xl p-6">
-                                    <canvas id="chatgptRadarChart" height="300"></canvas>
+                                <div class="text-sm text-gray-600 mb-3">
+                                    📊 基于1245条真实用户评价的6维度评分
+                                </div>
+                                <div class="bg-gray-50 rounded-2xl p-4">
+                                    <canvas id="chatgptRadarChart" height="220"></canvas>
                                 </div>
                             </div>
                             
                             <!-- 右侧：柱状图 -->
                             <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
                                     <i class="fas fa-chart-bar mr-3 text-primary-600"></i>
                                     性能对比
                                 </h4>
-                                <div class="bg-gray-50 rounded-2xl p-6">
-                                    <canvas id="chatgptBarChart" height="300"></canvas>
+                                <div class="text-sm text-gray-600 mb-3">
+                                    ⭐ 实际使用测试后的功能评分
+                                </div>
+                                <div class="bg-gray-50 rounded-2xl p-4">
+                                    <canvas id="chatgptBarChart" height="220"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -565,23 +571,29 @@
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <!-- 左侧：环形图 -->
                             <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
                                     <i class="fas fa-chart-pie mr-3 text-purple-600"></i>
                                     功能分布
                                 </h4>
-                                <div class="bg-gray-50 rounded-2xl p-6">
-                                    <canvas id="midjourneyPieChart" height="300"></canvas>
+                                <div class="text-sm text-gray-600 mb-3">
+                                    📈 基于892条用户使用场景统计
+                                </div>
+                                <div class="bg-gray-50 rounded-2xl p-4">
+                                    <canvas id="midjourneyPieChart" height="220"></canvas>
                                 </div>
                             </div>
                             
                             <!-- 右侧：折线图 -->
                             <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
                                     <i class="fas fa-chart-line mr-3 text-purple-600"></i>
                                     版本进化趋势
                                 </h4>
-                                <div class="bg-gray-50 rounded-2xl p-6">
-                                    <canvas id="midjourneyLineChart" height="300"></canvas>
+                                <div class="text-sm text-gray-600 mb-3">
+                                    🚀 各版本功能迭代和性能提升
+                                </div>
+                                <div class="bg-gray-50 rounded-2xl p-4">
+                                    <canvas id="midjourneyLineChart" height="220"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -697,8 +709,11 @@
                 </div>
                 
                 <!-- 图表容器 -->
-                <div class="h-96">
+                <div class="h-72">
                     <canvas id="comparisonChart"></canvas>
+                </div>
+                <div class="mt-4 text-center text-sm text-gray-500">
+                    📊 基于1000+用户评价和实际测试数据的多维度对比
                 </div>
                 
                 <!-- 图例说明 -->
