@@ -84,13 +84,9 @@
     
     <!-- 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     
     <!-- 字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Chart.js 用于图表 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         * {
@@ -99,19 +95,6 @@
         
         .heading-font {
             font-family: 'Poppins', sans-serif;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .gradient-bg {
@@ -164,48 +147,6 @@
                 padding: 4rem 1rem;
             }
         }
-        
-        /* 自定义滚动条 */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #5a6fd8 0%, #6a4199 100%);
-        }
-        
-        /* 加载动画 */
-        .loading-dots {
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .loading-dots span {
-            width: 8px;
-            height: 8px;
-            margin: 0 2px;
-            background-color: #3b82f6;
-            border-radius: 50%;
-            animation: loading 1.4s infinite ease-in-out both;
-        }
-        
-        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-        
-        @keyframes loading {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
     </style>
     
     <!-- JSON-LD Structured Data -->
@@ -235,7 +176,7 @@
                         <i class="fas fa-robot text-white text-2xl"></i>
                     </div>
                     <div>
-                        <span class="text-3xl font-bold gradient-text heading-font">
+                        <span class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent heading-font">
                             AI工具评测网
                         </span>
                         <p class="text-xs text-gray-500 mt-1">找到最适合你的AI工具</p>
@@ -259,9 +200,9 @@
                         </span>
                     </a>
                     <a href="#comparisons" class="text-gray-700 hover:text-primary-600 font-medium transition-colors flex items-center group">
-                        <i class="fas fa-chart-bar mr-2 group-hover:text-primary-500"></i>
+                        <i class="fas fa-balance-scale mr-2 group-hover:text-primary-500"></i>
                         <span class="relative">
-                            可视化对比
+                            工具对比
                             <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
                         </span>
                     </a>
@@ -277,11 +218,11 @@
                 <!-- 搜索和行动按钮 -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <div class="relative">
-                        <input type="text" id="searchInput" placeholder="搜索AI工具..." 
+                        <input type="text" placeholder="搜索AI工具..." 
                                class="pl-10 pr-4 py-2 w-56 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent shadow-sm">
                         <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
                     </div>
-                    <button onclick="showToolSelector()" class="bg-primary-500 text-white px-6 py-2 rounded-xl font-medium hover:bg-primary-600 transition-colors shadow-md">
+                    <button class="bg-primary-500 text-white px-6 py-2 rounded-xl font-medium hover:bg-primary-600 transition-colors shadow-md">
                         <i class="fas fa-magic mr-2"></i>工具推荐
                     </button>
                 </div>
@@ -302,28 +243,18 @@
                         <i class="fas fa-graduation-cap mr-3"></i>使用教程
                     </a>
                     <a href="#comparisons" class="block text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-lg hover:bg-primary-50 transition-colors">
-                        <i class="fas fa-chart-bar mr-3"></i>可视化对比
+                        <i class="fas fa-balance-scale mr-3"></i>工具对比
                     </a>
                     <a href="#guide" class="block text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-lg hover:bg-primary-50 transition-colors">
                         <i class="fas fa-compass mr-3"></i>选择指南
                     </a>
-                    <div class="pt-4 border-t">
-                        <input type="text" placeholder="搜索..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- 英雄区域 - 现代设计 -->
-    <header class="relative overflow-hidden gradient-bg text-white py-24 md:py-32">
-        <!-- 背景装饰 -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-        </div>
-        
+    <!-- 英雄区域 -->
+    <header class="relative overflow-hidden gradient-bg text-white py-20 md:py-24">
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight heading-font animate-fade-in">
@@ -331,1027 +262,66 @@
                     <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 drop-shadow-lg">AI工具</span>
                 </h1>
                 <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.2s">
-                    我们通过<span class="font-bold text-yellow-300">可视化评测</span>和<span class="font-bold text-yellow-300">图形化对比</span>，<br>
+                    我们通过客观评测和对比分析，<br>
                     帮你快速找到真正适合你需求的AI工具。
                 </p>
                 <div class="flex flex-col md:flex-row justify-center gap-4 animate-slide-up" style="animation-delay: 0.4s">
                     <a href="#tools" class="bg-white text-primary-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        <i class="fas fa-search mr-2"></i>浏览可视化评测
+                        <i class="fas fa-search mr-2"></i>浏览工具评测
                     </a>
-                    <button onclick="showToolSelector()" class="bg-primary-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        <i class="fas fa-magic mr-2"></i>智能工具推荐
-                    </button>
-                </div>
-                
-                <!-- 统计数字 -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fade-in" style="animation-delay: 0.6s">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-yellow-300 mb-2">6+</div>
-                        <div class="text-gray-300">AI工具评测</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-yellow-300 mb-2">50+</div>
-                        <div class="text-gray-300">可视化图表</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-yellow-300 mb-2">1000+</div>
-                        <div class="text-gray-300">用户评价</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-yellow-300 mb-2">24/7</div>
-                        <div class="text-gray-300">持续更新</div>
-                    </div>
+                    <a href="#guide" class="bg-primary-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <i class="fas fa-question-circle mr-2"></i>如何选择？
+                    </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 价值主张 - 卡片设计 -->
-    <section class="container mx-auto px-4 -mt-12 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="card-hover bg-white p-8 rounded-2xl shadow-xl text-center animate-slide-up">
+    <!-- 价值主张 -->
+    <section class="container mx-auto px-4 -mt-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg text-center animate-slide-up">
                 <div class="w-20 h-20 gradient-bg-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <i class="fas fa-chart-pie text-3xl text-white"></i>
+                    <i class="fas fa-star text-3xl text-white"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 heading-font">可视化评测</h3>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 heading-font">专业评测</h3>
                 <p class="text-gray-600">
-                    通过雷达图、柱状图等可视化方式，直观展示工具的各项性能指标。
+                    每个工具都经过实际测试，提供客观、深度的评测报告。
                 </p>
             </div>
             
-            <div class="card-hover bg-white p-8 rounded-2xl shadow-xl text-center animate-slide-up" style="animation-delay: 0.1s">
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg text-center animate-slide-up" style="animation-delay: 0.1s">
                 <div class="w-20 h-20 gradient-bg-purple rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <i class="fas fa-balance-scale text-3xl text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 heading-font">图形化对比</h3>
-                <p class="text-gray-600">
-                    多维度对比图表，一目了然地看出不同工具的优势和劣势。
-                </p>
-            </div>
-            
-            <div class="card-hover bg-white p-8 rounded-2xl shadow-xl text-center animate-slide-up" style="animation-delay: 0.2s">
-                <div class="w-20 h-20 gradient-bg-green rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <i class="fas fa-graduation-cap text-3xl text-white"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 heading-font">交互式教程</h3>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 heading-font">实用教程</h3>
                 <p class="text-gray-600">
-                    结合图表和动画的教程，让学习过程更加直观和有趣。
+                    从入门到精通，step-by-step教程帮你快速上手。
+                </p>
+            </div>
+            
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg text-center animate-slide-up" style="animation-delay: 0.2s">
+                <div class="w-20 h-20 gradient-bg-green rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <i class="fas fa-balance-scale text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 heading-font">客观对比</h3>
+                <p class="text-gray-600">
+                    多维度对比分析，帮你做出明智的选择。
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- 可视化工具评测 -->
+    <!-- AI工具卡片网格 - 一行3个，信息密度更高 -->
     <section class="section-padding" id="tools">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 heading-font">📊 可视化AI工具评测</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
-                    通过图表和数据可视化，直观了解每个AI工具的性能表现。
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 heading-font">🔥 热门AI工具评测</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    基于功能、易用性、性价比等多维度评测，帮你找到最适合的工具。
                 </p>
             </div>
 
-            <!-- ChatGPT 可视化评测 -->
-            <div class="mb-20 animate-fade-in">
-                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
-                    <!-- 工具头部 -->
-                    <div class="gradient-bg-blue p-8 text-white">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <div class="flex items-center mb-6 md:mb-0">
-                                <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mr-6">
-                                    <i class="fas fa-comments text-3xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold heading-font">ChatGPT Plus</h3>
-                                    <p class="opacity-90">OpenAI · 对话AI · 编辑推荐</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="text-center">
-                                    <div class="text-4xl font-bold">4.9</div>
-                                    <div class="text-sm opacity-90">综合评分</div>
-                                </div>
-                                <div class="h-12 w-px bg-white/30"></div>
-                                <div class="text-center">
-                                    <div class="text-4xl font-bold">1,245</div>
-                                    <div class="text-sm opacity-90">用户评价</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <!-- 左侧：能力评分卡片 -->
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                                    <i class="fas fa-star mr-3 text-yellow-500"></i>
-                                    ChatGPT核心优势
-                                </h4>
-                                <div class="space-y-4">
-                                    <div class="bg-blue-50 p-4 rounded-xl">
-                                        <div class="flex justify-between mb-2">
-                                            <span class="font-medium text-gray-800">对话和写作能力</span>
-                                            <span class="font-bold text-green-600">95%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 95%"></div>
-                                        </div>
-                                        <p class="text-xs text-gray-600 mt-2">✅ 远超同类产品，写作质量非常高</p>
-                                    </div>
-                                    
-                                    <div class="bg-blue-50 p-4 rounded-xl">
-                                        <div class="flex justify-between mb-2">
-                                            <span class="font-medium text-gray-800">多语言支持</span>
-                                            <span class="font-bold text-green-600">92%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 92%"></div>
-                                        <option>学习研究</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 mb-2">选择语气风格</label>
-                                    <div class="flex flex-wrap gap-2">
-                                        <button class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200">专业</button>
-                                        <button class="px-3 py-1 bg-green-100 text-green-700 rounded-lg hover:bg-green-200">友好</button>
-                                        <button class="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200">创意</button>
-                                        <button class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200">简洁</button>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-gray-700 mb-2">生成提示词</label>
-                                    <div class="bg-white p-4 rounded-lg border border-gray-300 min-h-[100px]">
-                                        <span class="text-gray-500">选择选项后，这里会生成对应的提示词...</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <a href="#chatgpt-tutorial-full" class="text-primary-600 font-bold hover:text-primary-700 flex items-center">
-                                查看完整教程
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Midjourney参数教程 -->
-                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden animate-float" style="animation-delay: 0.5s">
-                    <div class="gradient-bg-purple p-8 text-white">
-                        <h3 class="text-2xl font-bold flex items-center">
-                            <i class="fas fa-sliders-h mr-4"></i>
-                            Midjourney参数详解
-                        </h3>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="mb-8">
-                            <h4 class="text-xl font-bold text-gray-800 mb-4">参数效果可视化</h4>
-                            <div class="bg-gray-50 rounded-2xl p-6">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
-                                            <i class="fas fa-paint-brush text-purple-600 text-2xl"></i>
-                                        </div>
-                                        <div class="font-medium text-gray-700">--style</div>
-                                        <div class="text-sm text-gray-500">艺术风格</div>
-                                    </div>
-                                    
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
-                                            <i class="fas fa-expand-alt text-blue-600 text-2xl"></i>
-                                        </div>
-                                        <div class="font-medium text-gray-700">--ar</div>
-                                        <div class="text-sm text-gray-500">宽高比</div>
-                                    </div>
-                                    
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
-                                            <i class="fas fa-seedling text-green-600 text-2xl"></i>
-                                        </div>
-                                        <div class="font-medium text-gray-700">--seed</div>
-                                        <div class="text-sm text-gray-500">随机种子</div>
-                                    </div>
-                                    
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
-                                            <i class="fas fa-tachometer-alt text-yellow-600 text-2xl"></i>
-                                        </div>
-                                        <div class="font-medium text-gray-700">--quality</div>
-                                        <div class="text-sm text-gray-500">生成质量</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 参数调节器 -->
-                        <div>
-                            <h4 class="text-xl font-bold text-gray-800 mb-4">参数调节模拟器</h4>
-                            <div class="bg-gray-50 rounded-2xl p-6">
-                                <div class="mb-6">
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-gray-700">细节程度: <span id="detailValue" class="font-bold">3</span></span>
-                                        <span class="text-gray-500">--stylize</span>
-                                    </div>
-                                    <input type="range" min="1" max="5" value="3" 
-                                           class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
-                                           oninput="updateDetailValue(this.value)">
-                                </div>
-                                
-                                <div class="mb-6">
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-gray-700">创意程度: <span id="creativeValue" class="font-bold">4</span></span>
-                                        <span class="text-gray-500">--creative</span>
-                                    </div>
-                                    <input type="range" min="1" max="5" value="4" 
-                                           class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
-                                           oninput="updateCreativeValue(this.value)">
-                                </div>
-                                
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-gray-700">生成速度: <span id="speedValue" class="font-bold">2</span></span>
-                                        <span class="text-gray-500">--fast</span>
-                                    </div>
-                                    <input type="range" min="1" max="5" value="2" 
-                                           class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
-                                           oninput="updateSpeedValue(this.value)">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <a href="#midjourney-tutorial-full" class="text-primary-600 font-bold hover:text-primary-700 flex items-center">
-                                查看完整教程
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="bg-gray-900 text-gray-300">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
-                            <i class="fas fa-robot text-white text-2xl"></i>
-                        </div>
-                        <span class="text-2xl font-bold text-white heading-font">AI工具评测网</span>
-                    </div>
-                    <p class="text-gray-400">
-                        专业的AI工具评测平台，通过可视化图表和交互式教程，帮助用户找到最适合的AI工具。
-                    </p>
-                    <div class="mt-6 flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-discord text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-white text-lg font-bold mb-6">快速链接</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">可视化评测</a></li>
-                        <li><a href="#comparisons" class="text-gray-400 hover:text-white transition-colors">图形化对比</a></li>
-                        <li><a href="#tutorials" class="text-gray-400 hover:text-white transition-colors">交互式教程</a></li>
-                        <li><a href="#guide" class="text-gray-400 hover:text-white transition-colors">选择指南</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white text-lg font-bold mb-6">热门工具</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#chatgpt" class="text-gray-400 hover:text-white transition-colors">ChatGPT可视化评测</a></li>
-                        <li><a href="#midjourney" class="text-gray-400 hover:text-white transition-colors">Midjourney参数教程</a></li>
-                        <li><a href="#claude" class="text-gray-400 hover:text-white transition-colors">Claude安全分析</a></li>
-                        <li><a href="#copilot" class="text-gray-400 hover:text-white transition-colors">GitHub Copilot</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white text-lg font-bold mb-6">订阅更新</h4>
-                    <p class="text-gray-400 mb-4">
-                        订阅我们的更新，获取最新的AI工具评测和教程。
-                    </p>
-                    <div class="flex">
-                        <input type="email" placeholder="你的邮箱" 
-                               class="flex-1 px-4 py-2 rounded-l-lg border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
-                        <button class="bg-primary-500 text-white px-4 py-2 rounded-r-lg hover:bg-primary-600 transition-colors">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-500">
-                    © 2026 AI工具评测网. 保留所有权利.
-                    <span class="block md:inline mt-2 md:mt-0">📅 最后更新: 2026年2月27日</span>
-                </p>
-                <p class="text-gray-500 mt-4">
-                    💡 本网站采用可视化设计，通过图表和交互帮助用户更好地理解AI工具。
-                </p>
-                <p class="text-gray-500 mt-2 text-sm">
-                    <a href="about.html" class="hover:text-gray-300">关于我们</a> | 
-                    <a href="privacy.html" class="hover:text-gray-300">隐私政策</a> | 
-                    <a href="contact.html" class="hover:text-gray-300">联系我们</a> |
-                    <a href="sitemap.xml" class="hover:text-gray-300">网站地图</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 模态框 -->
-    <div id="visualModal" class="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto modal-enter">
-            <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center">
-                <h3 class="text-2xl font-bold text-gray-800" id="visualModalTitle">可视化报告</h3>
-                <button onclick="closeVisualModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="p-6" id="visualModalContent">
-                <!-- 内容由JavaScript动态生成 -->
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // 初始化图表
-        let charts = {};
-        
-        // 页面加载完成
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('AI工具评测网 - 可视化版本已加载');
-            
-            // 初始化移动菜单
-            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-                const menu = document.getElementById('mobileMenu');
-                menu.classList.toggle('hidden');
-            });
-            
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // 关闭移动菜单
-                        if (window.innerWidth < 1024) {
-                            document.getElementById('mobileMenu').classList.add('hidden');
-                        }
-                        
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // 初始化图表
-            initCharts();
-            
-            // 添加滚动动画
-            addScrollAnimations();
-        });
-        
-        // 初始化所有图表
-        function initCharts() {
-            // ChatGPT雷达图
-            const chatgptRadarCtx = document.getElementById('chatgptRadarChart').getContext('2d');
-            charts.chatgptRadar = new Chart(chatgptRadarCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['文本生成', '代码能力', '多语言', '响应速度', '创意性', '准确性'],
-                    datasets: [{
-                        label: 'ChatGPT Plus',
-                        data: [95, 88, 92, 85, 90, 93],
-                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                        borderColor: 'rgb(59, 130, 246)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgb(59, 130, 246)',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2,
-                        pointRadius: 4
-                    }]
-                },
-                options: {
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                stepSize: 20
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-            
-            // ChatGPT柱状图
-            const chatgptBarCtx = document.getElementById('chatgptBarChart').getContext('2d');
-            charts.chatgptBar = new Chart(chatgptBarCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['对话质量', '代码生成', '文档处理', '创意写作', '学习辅助'],
-                    datasets: [{
-                        label: '评分',
-                        data: [95, 88, 90, 85, 92],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.7)',
-                            'rgba(16, 185, 129, 0.7)',
-                            'rgba(139, 92, 246, 0.7)',
-                            'rgba(245, 158, 11, 0.7)',
-                            'rgba(236, 72, 153, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgb(59, 130, 246)',
-                            'rgb(16, 185, 129)',
-                            'rgb(139, 92, 246)',
-                            'rgb(245, 158, 11)',
-                            'rgb(236, 72, 153)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-            
-            // Midjourney饼图
-            const midjourneyPieCtx = document.getElementById('midjourneyPieChart').getContext('2d');
-            charts.midjourneyPie = new Chart(midjourneyPieCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['艺术创作', '设计素材', '概念图', '营销图片', '其他'],
-                    datasets: [{
-                        data: [40, 25, 20, 10, 5],
-                        backgroundColor: [
-                            'rgba(139, 92, 246, 0.8)',
-                            'rgba(59, 130, 246, 0.8)',
-                            'rgba(16, 185, 129, 0.8)',
-                            'rgba(245, 158, 11, 0.8)',
-                            'rgba(156, 163, 175, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgb(139, 92, 246)',
-                            'rgb(59, 130, 246)',
-                            'rgb(16, 185, 129)',
-                            'rgb(245, 158, 11)',
-                            'rgb(156, 163, 175)'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-            
-            // Midjourney折线图
-            const midjourneyLineCtx = document.getElementById('midjourneyLineChart').getContext('2d');
-            charts.midjourneyLine = new Chart(midjourneyLineCtx, {
-                type: 'line',
-                data: {
-                    labels: ['V3', 'V4', 'V5', 'V5.1', 'V5.2', 'V6'],
-                    datasets: [{
-                        label: '图像质量',
-                        data: [65, 75, 85, 88, 90, 95],
-                        borderColor: 'rgb(139, 92, 246)',
-                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4
-                    }, {
-                        label: '生成速度',
-                        data: [90, 85, 80, 78, 75, 70],
-                        borderColor: 'rgb(59, 130, 246)',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100
-                        }
-                    }
-                }
-            });
-            
-            // 对比图表
-            const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
-            charts.comparison = new Chart(comparisonCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['对话能力', '创意生成', '技术能力', '响应速度', '易用性', '性价比'],
-                    datasets: [
-                        {
-                            label: 'ChatGPT',
-                            data: [95, 85, 88, 85, 90, 80],
-                            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                            borderColor: 'rgb(59, 130, 246)',
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Midjourney',
-                            data: [30, 95, 40, 70, 75, 85],
-                            backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                            borderColor: 'rgb(139, 92, 246)',
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Claude',
-                            data: [90, 70, 85, 80, 85, 75],
-                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                            borderColor: 'rgb(16, 185, 129)',
-                            borderWidth: 2
-                        }
-                    ]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    aspectRatio: 2.5,
-                    responsive: true,
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                display: false
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
-                    },
-                    layout: {
-                        padding: {
-                            top: 5,
-                            bottom: 30,
-                            left: 20,
-                            right: 20
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            align: 'center',
-                            labels: {
-                                padding: 15,
-                                boxWidth: 12
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        
-        // 显示对比图表
-        function showComparisonChart(type) {
-            const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
-            
-            // 销毁旧图表
-            if (charts.comparison) {
-                charts.comparison.destroy();
-            }
-            
-            let chartConfig;
-            
-            switch(type) {
-                case 'bar':
-                    chartConfig = {
-                        type: 'bar',
-                        data: {
-                            labels: ['对话能力', '创意生成', '技术能力', '响应速度', '易用性'],
-                            datasets: [
-                                {
-                                    label: 'ChatGPT',
-                                    data: [95, 85, 88, 85, 90],
-                                    backgroundColor: 'rgba(59, 130, 246, 0.8)'
-                                },
-                                {
-                                    label: 'Midjourney',
-                                    data: [30, 95, 40, 70, 75],
-                                    backgroundColor: 'rgba(139, 92, 246, 0.8)'
-                                },
-                                {
-                                    label: 'Claude',
-                                    data: [90, 70, 85, 80, 85],
-                                    backgroundColor: 'rgba(16, 185, 129, 0.8)'
-                                }
-                            ]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 100
-                                }
-                            }
-                        }
-                    };
-                    break;
-                    
-                case 'line':
-                    chartConfig = {
-                        type: 'line',
-                        data: {
-                            labels: ['基础功能', '进阶功能', '专业功能', '团队协作', 'API支持'],
-                            datasets: [
-                                {
-                                    label: 'ChatGPT',
-                                    data: [85, 88, 90, 92, 95],
-                                    borderColor: 'rgb(59, 130, 246)',
-                                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                                    borderWidth: 3,
-                                    fill: true
-                                },
-                                {
-                                    label: 'Midjourney',
-                                    data: [80, 85, 88, 85, 70],
-                                    borderColor: 'rgb(139, 92, 246)',
-                                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                                    borderWidth: 3,
-                                    fill: true
-                                },
-                                {
-                                    label: 'Claude',
-                                    data: [82, 85, 88, 90, 88],
-                                    borderColor: 'rgb(16, 185, 129)',
-                                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                                    borderWidth: 3,
-                                    fill: true
-                                }
-                            ]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 100
-                                }
-                            }
-                        }
-                    };
-                    break;
-                    
-                default: // radar
-                    chartConfig = {
-                        type: 'radar',
-                        data: {
-                            labels: ['对话能力', '创意生成', '技术能力', '响应速度', '易用性', '性价比'],
-                            datasets: [
-                                {
-                                    label: 'ChatGPT',
-                                    data: [95, 85, 88, 85, 90, 80],
-                                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                                    borderColor: 'rgb(59, 130, 246)',
-                                    borderWidth: 2
-                                },
-                                {
-                                    label: 'Midjourney',
-                                    data: [30, 95, 40, 70, 75, 85],
-                                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                                    borderColor: 'rgb(139, 92, 246)',
-                                    borderWidth: 2
-                                },
-                                {
-                                    label: 'Claude',
-                                    data: [90, 70, 85, 80, 85, 75],
-                                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                                    borderColor: 'rgb(16, 185, 129)',
-                                    borderWidth: 2
-                                }
-                            ]
-                        },
-                        options: {
-                            scales: {
-                                r: {
-                                    beginAtZero: true,
-                                    max: 100
-                                }
-                            }
-                        }
-                    };
-            }
-            
-            charts.comparison = new Chart(comparisonCtx, chartConfig);
-        }
-        
-        // 显示可视化详情
-        function showVisualDetail(toolId) {
-            let title, content;
-            
-            switch(toolId) {
-                case 'chatgpt':
-                    title = 'ChatGPT Plus - 完整可视化报告';
-                    content = `
-                        <div class="space-y-8">
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-4">📊 综合性能分析</h4>
-                                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                    <div class="bg-blue-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-blue-600">95%</div>
-                                        <div class="text-gray-600">文本生成</div>
-                                    </div>
-                                    <div class="bg-green-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-green-600">88%</div>
-                                        <div class="text-gray-600">代码能力</div>
-                                    </div>
-                                    <div class="bg-purple-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-purple-600">92%</div>
-                                        <div class="text-gray-600">多语言</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-4">📈 用户评分趋势</h4>
-                                <div class="bg-gray-50 rounded-2xl p-6">
-                                    <canvas id="detailTrendChart" height="200"></canvas>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-4">🎯 适用场景分析</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-gray-700">内容创作</span>
-                                        <div class="w-48 bg-gray-200 rounded-full h-3">
-                                            <div class="bg-green-500 h-3 rounded-full" style="width: 95%"></div>
-                                        </div>
-                                        <span class="font-bold text-green-600 ml-4">95%</span>
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-gray-700">编程辅助</span>
-                                        <div class="w-48 bg-gray-200 rounded-full h-3">
-                                            <div class="bg-blue-500 h-3 rounded-full" style="width: 88%"></div>
-                                        </div>
-                                        <span class="font-bold text-blue-600 ml-4">88%</span>
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-gray-700">学习研究</span>
-                                        <div class="w-48 bg-gray-200 rounded-full h-3">
-                                            <div class="bg-purple-500 h-3 rounded-full" style="width: 92%"></div>
-                                        </div>
-                                        <span class="font-bold text-purple-600 ml-4">92%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'midjourney':
-                    title = 'Midjourney - 完整可视化报告';
-                    content = `
-                        <div class="space-y-8">
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-4">🎨 艺术风格分布</h4>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <div class="bg-purple-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-purple-600">40%</div>
-                                        <div class="text-gray-600">数字艺术</div>
-                                    </div>
-                                    <div class="bg-pink-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-pink-600">25%</div>
-                                        <div class="text-gray-600">概念设计</div>
-                                    </div>
-                                    <div class="bg-blue-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-blue-600">20%</div>
-                                        <div class="text-gray-600">插画创作</div>
-                                    </div>
-                                    <div class="bg-yellow-50 p-4 rounded-xl text-center">
-                                        <div class="text-3xl font-bold text-yellow-600">15%</div>
-                                        <div class="text-gray-600">商业设计</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-4">📊 版本进化对比</h4>
-                                <div class="bg-gray-50 rounded-2xl p-6">
-                                    <canvas id="midjourneyDetailChart" height="200"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                default:
-                    title = '可视化报告';
-                    content = '<p class="text-gray-600">报告加载中...</p>';
-            }
-            
-            document.getElementById('visualModalTitle').textContent = title;
-            document.getElementById('visualModalContent').innerHTML = content;
-            document.getElementById('visualModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            // 初始化详情图表
-            setTimeout(() => {
-                if (toolId === 'chatgpt') {
-                    initDetailTrendChart();
-                } else if (toolId === 'midjourney') {
-                    initMidjourneyDetailChart();
-                }
-            }, 100);
-        }
-        
-        // 关闭可视化模态框
-        function closeVisualModal() {
-            document.getElementById('visualModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // 初始化详情趋势图
-        function initDetailTrendChart() {
-            const ctx = document.getElementById('detailTrendChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
-                    datasets: [{
-                        label: '用户评分',
-                        data: [4.7, 4.8, 4.8, 4.9, 4.9, 4.9],
-                        borderColor: 'rgb(59, 130, 246)',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            min: 4.5,
-                            max: 5.0
-                        }
-                    }
-                }
-            });
-        }
-        
-        // 初始化Midjourney详情图表
-        function initMidjourneyDetailChart() {
-            const ctx = document.getElementById('midjourneyDetailChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['V4', 'V5', 'V5.1', 'V5.2', 'V6'],
-                    datasets: [
-                        {
-                            label: '图像质量',
-                            data: [75, 85, 88, 90, 95],
-                            backgroundColor: 'rgba(139, 92, 246, 0.8)'
-                        },
-                        {
-                            label: '生成速度',
-                            data: [85, 80, 78, 75, 70],
-                            backgroundColor: 'rgba(59, 130, 246, 0.8)'
-                        },
-                        {
-                            label: '细节控制',
-                            data: [70, 80, 85, 88, 92],
-                            backgroundColor: 'rgba(16, 185, 129, 0.8)'
-                        }
-                    ]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100
-                        }
-                    }
-                }
-            });
-        }
-        
-        // 工具选择器
-        function showToolSelector() {
-            alert('智能工具推荐功能正在开发中...\n\n根据你的需求，我们推荐：\n1. 内容创作 → ChatGPT\n2. 图像设计 → Midjourney\n3. 编程开发 → GitHub Copilot\n4. 安全对话 → Claude');
-        }
-        
-        // 应用筛选条件
-        function applyFilters() {
-            alert('筛选条件已应用！\n页面将根据你的选择显示相应的工具。');
-        }
-        
-        // 教程交互函数
-        function updateDetailValue(value) {
-            document.getElementById('detailValue').textContent = value;
-        }
-        
-        function updateCreativeValue(value) {
-            document.getElementById('creativeValue').textContent = value;
-        }
-        
-        function updateSpeedValue(value) {
-            document.getElementById('speedValue').textContent = value;
-        }
-        
-        // 添加滚动动画
-        function addScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // 观察需要动画的元素
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-        }
-        
-        // 搜索功能
-        document.getElementById('searchInput')?.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const query = this.value.trim();
-                if (query) {
-                    alert(`搜索: ${query}\n\n搜索结果将显示相关的AI工具评测和教程。`);
-                    this.value = '';
-                }
-            }
-        });
-        
-        // 点击模态框外部关闭
-        document.getElementById('visualModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeVisualModal();
-            }
-        });
-        
-        // 键盘快捷键
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeVisualModal();
-            }
-        });
-    </script>
-</body>
-</html>            <!-- AI工具卡片网格 - 一行3个，信息密度更高 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- ChatGPT Card -->
                 <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
@@ -1426,8 +396,7 @@
                         
                         <!-- 按钮 -->
                         <div class="flex space-x-3">
-                            <button onclick="showToolDetail('chatgpt')" 
-                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                            <button class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
                                 查看详情
                             </button>
                             <a href="https://chat.openai.com/" target="_blank" 
@@ -1511,8 +480,7 @@
                         
                         <!-- 按钮 -->
                         <div class="flex space-x-3">
-                            <button onclick="showToolDetail('midjourney')" 
-                                    class="flex-1 bg-purple-50 text-purple-600 py-3 rounded-xl font-medium hover:bg-purple-100 transition-colors">
+                            <button class="flex-1 bg-purple-50 text-purple-600 py-3 rounded-xl font-medium hover:bg-purple-100 transition-colors">
                                 查看详情
                             </button>
                             <a href="https://www.midjourney.com/" target="_blank" 
@@ -1596,8 +564,7 @@
                         
                         <!-- 按钮 -->
                         <div class="flex space-x-3">
-                            <button onclick="showToolDetail('claude')" 
-                                    class="flex-1 bg-green-50 text-green-600 py-3 rounded-xl font-medium hover:bg-green-100 transition-colors">
+                            <button class="flex-1 bg-green-50 text-green-600 py-3 rounded-xl font-medium hover:bg-green-100 transition-colors">
                                 查看详情
                             </button>
                             <a href="https://claude.ai/" target="_blank" 
@@ -1624,242 +591,3 @@
                             <span class="bg-white/20 px-3 py-1 rounded-full text-sm">💻 开发者必备</span>
                         </div>
                     </div>
-                    
-                    <div class="p-6">
-                        <!-- 评分 -->
-                        <div class="mb-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-gray-700 font-medium">综合评分</span>
-                                <span class="text-2xl font-bold text-yellow-500">4.6</span>
-                            </div>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        
-                        <!-- 核心特点 -->
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">智能代码补全，支持30+语言</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">集成IDE，开发效率提升50%</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-exclamation text-yellow-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">需要编程基础，偶尔错误</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 关键信息 -->
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <div class="bg-gray-50 p-3 rounded-lg text-center">
-                                <div class="text-xs text-gray-500 mb-1">价格</div>
-                                <div class="font-bold text-gray-800">$10/月</div>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center">
-                                <div class="text-xs text-gray-500 mb-1">难度</div>
-                                <div class="font-bold text-green-600">简单</div>
-                            </div>
-                        </div>
-                        
-                        <!-- 适用人群 -->
-                        <div class="mb-6">
-                            <div class="text-xs text-gray-500 mb-2">适合人群</div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">程序员</span>
-                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">开发者</span>
-                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">学生</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 按钮 -->
-                        <div class="flex space-x-3">
-                            <button onclick="showToolDetail('copilot')" 
-                                    class="flex-1 bg-gray-50 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-100 transition-colors">
-                                查看详情
-                            </button>
-                            <a href="https://github.com/features/copilot" target="_blank" 
-                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
-                                访问官网
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Notion AI Card -->
-                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                    <div class="bg-gradient-to-r from-gray-700 to-gray-800 p-6 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="flex items-center mb-2">
-                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
-                                        <i class="fas fa-sticky-note text-2xl"></i>
-                                    </div>
-                                    <h3 class="text-2xl font-bold">Notion AI</h3>
-                                </div>
-                                <p class="opacity-90">知识管理</p>
-                            </div>
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">📝 写作助手</span>
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <!-- 评分 -->
-                        <div class="mb-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-gray-700 font-medium">综合评分</span>
-                                <span class="text-2xl font-bold text-yellow-500">4.5</span>
-                            </div>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        
-                        <!-- 核心特点 -->
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">集成在Notion中，无缝体验</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">写作、总结、翻译功能完善</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-exclamation text-yellow-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">功能相对基础，附加付费</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 关键信息 -->
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <div class="bg-gray-50 p-3 rounded-lg text-center">
-                                <div class="text-xs text-gray-500 mb-1">价格</div>
-                                <div class="font-bold text-gray-800">$10/月</div>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center">
-                                <div class="text-xs text-gray-500 mb-1">难度</div>
-                                <div class="font-bold text-green-600">简单</div>
-                            </div>
-                        </div>
-                        
-                        <!-- 适用人群 -->
-                        <div class="mb-6">
-                            <div class="text-xs text-gray-500 mb-2">适合人群</div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">学生</span>
-                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">项目经理</span>
-                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">创作者</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 按钮 -->
-                        <div class="flex space-x-3">
-                            <button onclick="showToolDetail('notion')" 
-                                    class="flex-1 bg-gray-50 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-100 transition-colors">
-                                查看详情
-                            </button>
-                            <a href="https://www.notion.so/product/ai" target="_blank" 
-                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
-                                访问官网
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Runway Card -->
-                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                    <div class="gradient-bg-pink p-6 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="flex items-center mb-2">
-                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
-                                        <i class="fas fa-video text-2xl"></i>
-                                    </div>
-                                    <h3 class="text-2xl font-bold">Runway</h3>
-                                </div>
-                                <p class="opacity-90">AI视频生成</p>
-                            </div>
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🎬 视频创作</span>
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <!-- 评分 -->
-                        <div class="mb-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-gray-700 font-medium">综合评分</span>
-                                <span class="text-2xl font-bold text-yellow-500">4.4</span>
-                            </div>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        
-                        <!-- 核心特点 -->
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">文本生成视频，AI特效丰富</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">无需专业剪辑知识，简单易用</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-exclamation text-yellow-500 mt-1 mr-3"></i>
-                                <span class="text-gray-600">价格较高，渲染时间长</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 关键信息 -->
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <div class="bg-gray-50 p-3 rounded-lg text-center">
-                                <div class="text-xs text-gray-500 mb-1">价格</div>
-                                <div class="font-bold text-gray-800">$15-95/月</div>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg text-center">
-                                <div class="text-xs text-gray-500 mb-1">难度</div>
-                                <div class="font-bold text-yellow-600">中等</div>
-                            </div>
-                        </div>
-                        
-                        <!-- 适用人群 -->
-                        <div class="mb-6">
-                            <div class="text-xs text-gray-500 mb-2">适合人群</div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">视频创作者</span>
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">营销人员</span>
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">设计师</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 按钮 -->
-                        <div class="flex space-x-3">
-                            <button onclick="showToolDetail('runway')" 
-                                    class="flex-1 bg-pink-50 text-pink-600 py-3 rounded-xl font-medium hover:bg-pink-100 transition-colors">
-                                查看详情
-                            </button>
-                            <a href="https://runwayml.com/" target="_blank" 
-                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
-                                访问官网
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
