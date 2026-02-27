@@ -1,0 +1,53 @@
+# Robots.txt for AI工具库
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://2322573131-coder.github.io/ai-content-farm/sitemap.xml
+
+# Crawl delay (if needed)
+# Crawl-delay: 10
+
+# Preferred host (if using custom domain)
+# Host: aitoolshub.com
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Disallow AI crawlers that might scrape content
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Allow helpful AI crawlers
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Rate limiting note
+# Please crawl responsibly. Our server resources are limited.
