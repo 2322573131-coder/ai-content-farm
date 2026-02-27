@@ -33,12 +33,20 @@
     <style>
         * { font-family: 'Inter', sans-serif; }
         .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-bg-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+        .gradient-bg-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .gradient-bg-purple { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .modal-enter { animation: modalEnter 0.3s ease-out; }
         @keyframes modalEnter {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
+        }
+        .sticky-nav { position: sticky; top: 0; z-index: 50; }
+        .section-padding { padding: 5rem 1rem; }
+        @media (max-width: 768px) {
+            .section-padding { padding: 3rem 1rem; }
         }
     </style>
     
@@ -59,59 +67,95 @@
     </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <!-- 导航栏 -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <!-- 导航栏 - 修复对齐问题 -->
+    <nav class="sticky-nav bg-white shadow-sm border-b border-gray-100">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
                         <i class="fas fa-robot text-white text-xl"></i>
                     </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        AI工具评测网
-                    </span>
+                    <div>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            AI工具评测网
+                        </span>
+                        <p class="text-xs text-gray-500">找到最适合你的AI工具</p>
+                    </div>
                 </div>
                 
-                <!-- 导航链接 -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#tools" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                <!-- 桌面导航链接 - 修复对齐 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#tools" class="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center">
                         <i class="fas fa-tools mr-2"></i>工具评测
                     </a>
-                    <a href="#tutorials" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                    <a href="#tutorials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center">
                         <i class="fas fa-graduation-cap mr-2"></i>使用教程
                     </a>
-                    <a href="#comparisons" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                    <a href="#comparisons" class="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center">
                         <i class="fas fa-balance-scale mr-2"></i>工具对比
                     </a>
-                    <a href="#guide" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                    <a href="#guide" class="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center">
                         <i class="fas fa-compass mr-2"></i>选择指南
                     </a>
+                    <a href="#faq" class="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center">
+                        <i class="fas fa-question-circle mr-2"></i>常见问题
+                    </a>
+                </div>
+                
+                <!-- 搜索框 -->
+                <div class="hidden md:block">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="搜索AI工具..." 
+                               class="pl-10 pr-4 py-2 w-48 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
                 </div>
                 
                 <!-- 移动菜单按钮 -->
-                <button class="md:hidden text-gray-600">
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
+            </div>
+            
+            <!-- 移动菜单 -->
+            <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 py-4">
+                <div class="space-y-4 px-4">
+                    <a href="#tools" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
+                        <i class="fas fa-tools mr-3"></i>工具评测
+                    </a>
+                    <a href="#tutorials" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
+                        <i class="fas fa-graduation-cap mr-3"></i>使用教程
+                    </a>
+                    <a href="#comparisons" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
+                        <i class="fas fa-balance-scale mr-3"></i>工具对比
+                    </a>
+                    <a href="#guide" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
+                        <i class="fas fa-compass mr-3"></i>选择指南
+                    </a>
+                    <a href="#faq" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
+                        <i class="fas fa-question-circle mr-3"></i>常见问题
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- 英雄区域 - 用户价值导向 -->
-    <header class="gradient-bg text-white py-16">
+    <!-- 英雄区域 -->
+    <header class="gradient-bg text-white py-20 md:py-24">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 找到<span class="text-yellow-300">最适合你</span>的AI工具
             </h1>
             <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-3xl mx-auto">
-                我们测试和评测了市面上主流的AI工具，帮你节省研究时间，<br>
+                我们测试和评测了市面上主流的AI工具，帮你节省研究时间，
                 找到真正适合你需求的工具。
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#tools" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all shadow-lg">
+                <a href="#tools" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl">
                     <i class="fas fa-search mr-2"></i>浏览工具评测
                 </a>
-                <a href="#guide" class="bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-900 transition-all shadow-lg">
+                <a href="#guide" class="bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-900 transition-all shadow-lg hover:shadow-xl">
                     <i class="fas fa-question-circle mr-2"></i>如何选择？
                 </a>
             </div>
@@ -121,7 +165,7 @@
     <!-- 价值主张 -->
     <section class="container mx-auto px-4 -mt-8 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg text-center">
                 <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-star text-3xl text-blue-600"></i>
                 </div>
@@ -131,7 +175,7 @@
                 </p>
             </div>
             
-            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg text-center">
                 <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-graduation-cap text-3xl text-green-600"></i>
                 </div>
@@ -141,7 +185,7 @@
                 </p>
             </div>
             
-            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <div class="card-hover bg-white p-8 rounded-2xl shadow-lg text-center">
                 <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-balance-scale text-3xl text-purple-600"></i>
                 </div>
@@ -153,203 +197,693 @@
         </div>
     </section>
 
-    <!-- 热门工具评测 -->
-    <section class="container mx-auto px-4 mt-16" id="tools">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">🔥 热门AI工具评测</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                基于功能、易用性、性价比等多维度评测，帮你找到最适合的工具。
-            </p>
+    <!-- 热门工具评测 - 增加更多工具 -->
+    <section class="section-padding" id="tools">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">🔥 热门AI工具评测</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    基于功能、易用性、性价比等多维度评测，帮你找到最适合的工具。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ChatGPT Card -->
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="gradient-bg-blue p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
+                                        <i class="fas fa-comments text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">ChatGPT Plus</h3>
+                                </div>
+                                <p class="opacity-90">OpenAI · 对话AI</p>
+                            </div>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🏆 编辑推荐</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">
+                            最先进的对话AI，支持多模态输入、128K上下文、文件上传和自定义GPTs。适合内容创作、编程、学习等多种场景。
+                        </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-700 font-medium">4.9/5.0</span>
+                                <span class="text-gray-500 text-sm ml-2">(1,245条评价)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">适合人群</span>
+                                <span class="font-medium text-blue-600">创作者、开发者、学生</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">价格</span>
+                                <span class="font-medium text-gray-800">$20/月 或 $200/年</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">学习难度</span>
+                                <span class="font-medium text-green-600">简单</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button onclick="showToolDetail('chatgpt')" 
+                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>查看详细评测
+                            </button>
+                            <a href="https://chat.openai.com/" target="_blank" 
+                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
+                                <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Midjourney Card -->
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="gradient-bg-purple p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
+                                        <i class="fas fa-palette text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">Midjourney</h3>
+                                </div>
+                                <p class="opacity-90">AI图像生成</p>
+                            </div>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🎨 创意设计</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">
+                            顶级AI图像生成工具，创造令人惊叹的艺术作品、设计和插画。V6模型提供超高分辨率和细节控制。
+                        </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-700 font-medium">4.7/5.0</span>
+                                <span class="text-gray-500 text-sm ml-2">(892条评价)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">适合人群</span>
+                                <span class="font-medium text-blue-600">设计师、艺术家、营销人员</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">价格</span>
+                                <span class="font-medium text-gray-800">$10-60/月（按使用量）</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">学习难度</span>
+                                <span class="font-medium text-yellow-600">中等</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button onclick="showToolDetail('midjourney')" 
+                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>查看详细评测
+                            </button>
+                            <a href="https://www.midjourney.com/" target="_blank" 
+                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
+                                <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claude Card -->
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="gradient-bg-green p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
+                                        <i class="fas fa-shield-alt text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">Claude Pro</h3>
+                                </div>
+                                <p class="opacity-90">Anthropic · 安全AI</p>
+                            </div>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🔒 安全可靠</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">
+                            安全的写作和分析助手，擅长长文档处理、代码分析和安全对话。200K上下文长度，特别适合敏感领域。
+                        </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-700 font-medium">4.8/5.0</span>
+                                <span class="text-gray-500 text-sm ml-2">(756条评价)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">适合人群</span>
+                                <span class="font-medium text-blue-600">法律、医疗、金融从业者</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">价格</span>
+                                <span class="font-medium text-gray-800">$20/月 或 $200/年</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">学习难度</span>
+                                <span class="font-medium text-green-600">简单</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button onclick="showToolDetail('claude')" 
+                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>查看详细评测
+                            </button>
+                            <a href="https://claude.ai/" target="_blank" 
+                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
+                                <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Copilot Card -->
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
+                                        <i class="fas fa-code text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">GitHub Copilot</h3>
+                                </div>
+                                <p class="opacity-90">Microsoft · AI编程助手</p>
+                            </div>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">💻 开发者必备</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">
+                            智能代码补全工具，支持多种编程语言，能理解上下文并生成高质量的代码片段。
+                        </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-700 font-medium">4.6/5.0</span>
+                                <span class="text-gray-500 text-sm ml-2">(1,892条评价)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">适合人群</span>
+                                <span class="font-medium text-blue-600">程序员、开发者、学生</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">价格</span>
+                                <span class="font-medium text-gray-800">$10/月 或 $100/年</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">学习难度</span>
+                                <span class="font-medium text-green-600">简单</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button onclick="showToolDetail('copilot')" 
+                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>查看详细评测
+                            </button>
+                            <a href="https://github.com/features/copilot" target="_blank" 
+                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
+                                <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notion AI Card -->
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="bg-gradient-to-r from-gray-700 to-gray-800 p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
+                                        <i class="fas fa-sticky-note text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">Notion AI</h3>
+                                </div>
+                                <p class="opacity-90">Notion · 知识管理</p>
+                            </div>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">📝 写作助手</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">
+                            集成在Notion中的AI助手，帮助写作、总结、翻译、头脑风暴，提升知识管理效率。
+                        </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-700 font-medium">4.5/5.0</span>
+                                <span class="text-gray-500 text-sm ml-2">(654条评价)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">适合人群</span>
+                                <span class="font-medium text-blue-600">学生、作家、项目经理</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">价格</span>
+                                <span class="font-medium text-gray-800">$10/月（附加功能）</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">学习难度</span>
+                                <span class="font-medium text-green-600">简单</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button onclick="showToolDetail('notion')" 
+                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>查看详细评测
+                            </button>
+                            <a href="https://www.notion.so/product/ai" target="_blank" 
+                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
+                                <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Runway Card -->
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="bg-gradient-to-r from-pink-500 to-rose-600 p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
+                                        <i class="fas fa-video text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">Runway</h3>
+                                </div>
+                                <p class="opacity-90">AI视频生成</p>
+                            </div>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🎬 视频创作</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">
+                            强大的AI视频编辑和生成平台，支持文本转视频、视频编辑、特效生成等多种功能。
+                        </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-700 font-medium">4.4/5.0</span>
+                                <span class="text-gray-500 text-sm ml-2">(432条评价)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">适合人群</span>
+                                <span class="font-medium text-blue-600">视频创作者、营销人员</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">价格</span>
+                                <span class="font-medium text-gray-800">$15-95/月</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">学习难度</span>
+                                <span class="font-medium text-yellow-600">中等</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <button onclick="showToolDetail('runway')" 
+                                    class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>查看详细评测
+                            </button>
+                            <a href="https://runwayml.com/" target="_blank" 
+                               class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
+                                <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 查看更多按钮 -->
+            <div class="text-center mt-12">
+                <a href="#all-tools" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-shadow">
+                    <i class="fas fa-arrow-right mr-3"></i>
+                    查看更多AI工具
+                </a>
+            </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- ChatGPT Card -->
-            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                <div class="gradient-bg p-6 text-white">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <div class="flex items-center mb-2">
-                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
-                                    <i class="fas fa-comments text-2xl"></i>
+    <!-- 工具对比表格 -->
+    <section class="section-padding bg-gray-50" id="comparisons">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">📊 AI工具对比表</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    一目了然的对比，帮你快速找到最适合的工具。
+                </p>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-lg">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="py-4 px-6 text-left font-bold text-gray-700">工具名称</th>
+                            <th class="py-4 px-6 text-left font-bold text-gray-700">主要功能</th>
+                            <th class="py-4 px-6 text-left font-bold text-gray-700">价格</th>
+                            <th class="py-4 px-6 text-left font-bold text-gray-700">适合人群</th>
+                            <th class="py-4 px-6 text-left font-bold text-gray-700">评分</th>
+                            <th class="py-4 px-6 text-left font-bold text-gray-700">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-blue-50">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 gradient-bg-blue rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-comments text-white"></i>
+                                    </div>
+                                    <span class="font-medium">ChatGPT Plus</span>
                                 </div>
-                                <h3 class="text-2xl font-bold">ChatGPT Plus</h3>
-                            </div>
-                            <p class="opacity-90">OpenAI · 对话AI</p>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600">对话、写作、编程、分析</td>
+                            <td class="py-4 px-6">
+                                <span class="font-medium text-gray-800">$20/月</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">创作者</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm ml-1">开发者</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="font-medium">4.9</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <button onclick="showToolDetail('chatgpt')" class="text-blue-600 hover:text-blue-800 font-medium">
+                                    查看详情
+                                </button>
+                            </td>
+                        </tr>
+                        
+                        <tr class="border-b border-gray-100 hover:bg-purple-50">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 gradient-bg-purple rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-palette text-white"></i>
+                                    </div>
+                                    <span class="font-medium">Midjourney</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600">图像生成、艺术创作</td>
+                            <td class="py-4 px-6">
+                                <span class="font-medium text-gray-800">$10-60/月</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">设计师</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm ml-1">艺术家</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="font-medium">4.7</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <button onclick="showToolDetail('midjourney')" class="text-blue-600 hover:text-blue-800 font-medium">
+                                    查看详情
+                                </button>
+                            </td>
+                        </tr>
+                        
+                        <tr class="border-b border-gray-100 hover:bg-green-50">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 gradient-bg-green rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-shield-alt text-white"></i>
+                                    </div>
+                                    <span class="font-medium">Claude Pro</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600">安全对话、文档分析</td>
+                            <td class="py-4 px-6">
+                                <span class="font-medium text-gray-800">$20/月</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">专业人士</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm ml-1">研究人员</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="font-medium">4.8</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <button onclick="showToolDetail('claude')" class="text-blue-600 hover:text-blue-800 font-medium">
+                                    查看详情
+                                </button>
+                            </td>
+                        </tr>
+                        
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-code text-white"></i>
+                                    </div>
+                                    <span class="font-medium">GitHub Copilot</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600">代码补全、编程助手</td>
+                            <td class="py-4 px-6">
+                                <span class="font-medium text-gray-800">$10/月</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">程序员</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm ml-1">开发者</span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="font-medium">4.6</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <button onclick="showToolDetail('copilot')" class="text-blue-600 hover:text-blue-800 font-medium">
+                                    查看详情
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用教程 -->
+    <section class="section-padding" id="tutorials">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">📚 实用教程</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    从零开始学习AI工具的使用技巧和最佳实践。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-keyboard text-2xl text-blue-600"></i>
                         </div>
-                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🏆 编辑推荐</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">ChatGPT提示词技巧</h3>
+                        <p class="text-gray-600 mb-6">
+                            学习如何编写有效的提示词，让ChatGPT更好地理解你的需求，生成更准确的结果。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="#chatgpt-tutorial" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                                阅读教程 <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <span class="text-gray-500 text-sm">阅读时间: 8分钟</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        最先进的对话AI，支持多模态输入、128K上下文、文件上传和自定义GPTs。适合内容创作、编程、学习等多种场景。
-                    </p>
-                    
-                    <div class="mb-6">
-                        <div class="flex items-center mb-2">
-                            <div class="text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-gray-700 font-medium">4.9/5.0</span>
-                            <span class="text-gray-500 text-sm ml-2">(1,245条评价)</span>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-magic text-2xl text-pink-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Midjourney参数详解</h3>
+                        <p class="text-gray-600 mb-6">
+                            掌握Midjourney的各种参数设置，生成更符合预期的图像作品。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="#midjourney-tutorial" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                                阅读教程 <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <span class="text-gray-500 text-sm">阅读时间: 12分钟</span>
                         </div>
                     </div>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">适合人群</span>
-                            <span class="font-medium text-blue-600">创作者、开发者、学生</span>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-code text-2xl text-green-600"></i>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">价格</span>
-                            <span class="font-medium text-gray-800">$20/月 或 $200/年</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Claude代码分析指南</h3>
+                        <p class="text-gray-600 mb-6">
+                            利用Claude分析、调试和优化代码，提高编程效率。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="#claude-tutorial" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                                阅读教程 <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <span class="text-gray-500 text-sm">阅读时间: 10分钟</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">学习难度</span>
-                            <span class="font-medium text-green-600">简单</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-3">
-                        <button onclick="showToolDetail('chatgpt')" 
-                                class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
-                            <i class="fas fa-info-circle mr-2"></i>查看详细评测
-                        </button>
-                        <a href="https://chat.openai.com/" target="_blank" 
-                           class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
-                            <i class="fas fa-external-link-alt mr-2"></i>访问官网
-                        </a>
                     </div>
                 </div>
             </div>
-
-            <!-- Midjourney Card -->
-            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                <div class="bg-gradient-to-r from-pink-500 to-rose-600 p-6 text-white">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <div class="flex items-center mb-2">
-                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
-                                    <i class="fas fa-palette text-2xl"></i>
-                                </div>
-                                <h3 class="text-2xl font-bold">Midjourney</h3>
-                            </div>
-                            <p class="opacity-90">AI图像生成</p>
+            
+            <!-- 更多教程 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-rocket text-2xl text-yellow-600"></i>
                         </div>
-                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🎨 创意设计</span>
-                    </div>
-                </div>
-                
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        顶级AI图像生成工具，创造令人惊叹的艺术作品、设计和插画。V6模型提供超高分辨率和细节控制。
-                    </p>
-                    
-                    <div class="mb-6">
-                        <div class="flex items-center mb-2">
-                            <div class="text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-gray-700 font-medium">4.7/5.0</span>
-                            <span class="text-gray-500 text-sm ml-2">(892条评价)</span>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">适合人群</span>
-                            <span class="font-medium text-blue-600">设计师、艺术家、营销人员</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">价格</span>
-                            <span class="font-medium text-gray-800">$10-60/月（按使用量）</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">学习难度</span>
-                            <span class="font-medium text-yellow-600">中等</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-3">
-                        <button onclick="showToolDetail('midjourney')" 
-                                class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
-                            <i class="fas fa-info-circle mr-2"></i>查看详细评测
-                        </button>
-                        <a href="https://www.midjourney.com/" target="_blank" 
-                           class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
-                            <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">GitHub Copilot入门</h3>
+                        <p class="text-gray-600 mb-6">
+                            从安装到使用，快速掌握GitHub Copilot的核心功能。
+                        </p>
+                        <a href="#copilot-tutorial" class="text-blue-600 font-medium hover:text-blue-800">
+                            开始学习 →
                         </a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Claude Card -->
-            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                <div class="bg-gradient-to-r from-cyan-500 to-blue-600 p-6 text-white">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <div class="flex items-center mb-2">
-                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-3">
-                                    <i class="fas fa-shield-alt text-2xl"></i>
-                                </div>
-                                <h3 class="text-2xl font-bold">Claude Pro</h3>
-                            </div>
-                            <p class="opacity-90">Anthropic · 安全AI</p>
+                
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-video text-2xl text-purple-600"></i>
                         </div>
-                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🔒 安全可靠</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Runway视频制作</h3>
+                        <p class="text-gray-600 mb-6">
+                            学习使用Runway制作专业级AI视频，从文本到视频的完整流程。
+                        </p>
+                        <a href="#runway-tutorial" class="text-blue-600 font-medium hover:text-blue-800">
+                            开始学习 →
+                        </a>
                     </div>
                 </div>
                 
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        安全的写作和分析助手，擅长长文档处理、代码分析和安全对话。200K上下文长度，特别适合敏感领域。
-                    </p>
-                    
-                    <div class="mb-6">
-                        <div class="flex items-center mb-2">
-                            <div class="text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-gray-700 font-medium">4.8/5.0</span>
-                            <span class="text-gray-500 text-sm ml-2">(756条评价)</span>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-line text-2xl text-red-600"></i>
                         </div>
-                    </div>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">适合人群</span>
-                            <span class="font-medium text-blue-600">法律、医疗、金融从业者</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">价格</span>
-                            <span class="font-medium text-gray-800">$20/月 或 $200/年</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">学习难度</span>
-                            <span class="font-medium text-green-600">简单</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-3">
-                        <button onclick="showToolDetail('claude')" 
-                                class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-medium hover:bg-blue-100 transition-colors">
-                            <i class="fas fa-info-circle mr-2"></i>查看详细评测
-                        </button>
-                        <a href="https://claude.ai/" target="_blank" 
-                           class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-medium text-center hover:shadow-lg transition-shadow">
-                            <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Notion AI工作流</h3>
+                        <p class="text-gray-600 mb-6">
+                            利用Notion AI优化你的知识管理工作流，提升效率。
+                        </p>
+                        <a href="#notion-tutorial" class="text-blue-600 font-medium hover:text-blue-800">
+                            开始学习 →
                         </a>
                     </div>
                 </div>
@@ -358,135 +892,134 @@
     </section>
 
     <!-- 如何选择指南 -->
-    <section class="container mx-auto px-4 mt-20" id="guide">
-        <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-10 shadow-lg">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">🤔 如何选择适合你的AI工具？</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-md">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-user-check text-blue-600 mr-3"></i>
-                        按需求选择
-                    </h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span><strong>内容创作</strong> → ChatGPT, Claude, Jasper</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span><strong>图像设计</strong> → Midjourney, DALL-E, Stable Diffusion</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span><strong>编程开发</strong> → GitHub Copilot, ChatGPT, Claude</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span><strong>视频制作</strong> → Runway, Pictory, Descript</span>
-                        </li>
-                    </ul>
+    <section class="section-padding bg-gray-50" id="guide">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-10 shadow-lg">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">🤔 如何选择适合你的AI工具？</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-md">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-user-check text-blue-600 mr-3"></i>
+                            按需求选择
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>内容创作</strong> → ChatGPT, Claude, Jasper</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>图像设计</strong> → Midjourney, DALL-E, Stable Diffusion</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>编程开发</strong> → GitHub Copilot, ChatGPT, Claude</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>视频制作</strong> → Runway, Pictory, Descript</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-md">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-wallet text-green-600 mr-3"></i>
+                            按预算选择
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-coins text-yellow-500 mt-1 mr-3"></i>
+                                <span><strong>免费试用</strong>：大多数工具提供免费额度</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dollar-sign text-blue-500 mt-1 mr-3"></i>
+                                <span><strong>$10-20/月</strong>：个人用户最佳选择</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chart-line text-purple-500 mt-1 mr-3"></i>
+                                <span><strong>$50+/月</strong>：专业用户或团队使用</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-building text-gray-500 mt-1 mr-3"></i>
+                                <span><strong>企业定制</strong>：联系厂商获取报价</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="bg-white p-8 rounded-2xl shadow-md">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-wallet text-green-600 mr-3"></i>
-                        按预算选择
-                    </h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-coins text-yellow-500 mt-1 mr-3"></i>
-                            <span><strong>免费试用</strong>：大多数工具提供免费额度</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-dollar-sign text-blue-500 mt-1 mr-3"></i>
-                            <span><strong>$10-20/月</strong>：个人用户最佳选择</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chart-line text-purple-500 mt-1 mr-3"></i>
-                            <span><strong>$50+/月</strong>：专业用户或团队使用</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-building text-gray-500 mt-1 mr-3"></i>
-                            <span><strong>企业定制</strong>：联系厂商获取报价</span>
-                        </li>
-                    </ul>
+                <div class="mt-8 text-center">
+                    <a href="#tools" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-shadow">
+                        <i class="fas fa-rocket mr-3"></i>
+                        开始探索工具
+                    </a>
                 </div>
-            </div>
-            
-            <div class="mt-8 text-center">
-                <a href="#tools" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-shadow">
-                    <i class="fas fa-rocket mr-3"></i>
-                    开始探索工具
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- 使用教程 -->
-    <section class="container mx-auto px-4 mt-20" id="tutorials">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">📚 实用教程</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                从零开始学习AI工具的使用技巧和最佳实践。
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-keyboard text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">ChatGPT提示词技巧</h3>
-                    <p class="text-gray-600 mb-6">
-                        学习如何编写有效的提示词，让ChatGPT更好地理解你的需求，生成更准确的结果。
-                    </p>
-                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">
-                        阅读教程 →
-                    </a>
-                </div>
+    <!-- 常见问题 -->
+    <section class="section-padding" id="faq">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">❓ 常见问题</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    关于AI工具使用的常见问题和解答。
+                </p>
             </div>
             
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-magic text-2xl text-pink-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Midjourney参数详解</h3>
-                    <p class="text-gray-600 mb-6">
-                        掌握Midjourney的各种参数设置，生成更符合预期的图像作品。
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        AI工具真的能提高工作效率吗？
+                    </h3>
+                    <p class="text-gray-600">
+                        是的，合适的AI工具可以显著提高工作效率。例如，ChatGPT可以帮助快速生成内容，GitHub Copilot可以加速编程，Midjourney可以快速生成设计素材。关键是选择适合你工作流程的工具。
                     </p>
-                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">
-                        阅读教程 →
-                    </a>
                 </div>
-            </div>
-            
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-code text-2xl text-green-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Claude代码分析指南</h3>
-                    <p class="text-gray-600 mb-6">
-                        利用Claude分析、调试和优化代码，提高编程效率。
+                
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        我应该从哪个AI工具开始？
+                    </h3>
+                    <p class="text-gray-600">
+                        如果你是初学者，建议从ChatGPT开始，因为它功能全面且易于使用。如果你主要做设计工作，可以从Midjourney开始。根据你的主要需求选择合适的工具。
                     </p>
-                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">
-                        阅读教程 →
-                    </a>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        AI工具需要学习多久？
+                    </h3>
+                    <p class="text-gray-600">
+                        大多数AI工具都有简单的界面，基本功能可以在几小时内掌握。但要精通高级功能，可能需要几天到几周的时间。我们的教程可以帮助你快速上手。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-question-circle text-blue-600 mr-3"></i>
+                        如何判断一个AI工具是否适合我？
+                    </h3>
+                    <p class="text-gray-600">
+                        建议先使用免费版本或试用期，看看工具是否能解决你的具体问题。同时考虑价格、学习曲线、社区支持等因素。我们的评测和对比表可以帮助你做出决定。
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-gray-900 text-gray-300 mt-20">
+    <footer class="bg-gray-900 text-gray-300">
         <div class="container mx-auto px-4 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
                             <i class="fas fa-robot text-white text-xl"></i>
                         </div>
                         <span class="text-2xl font-bold text-white">AI工具评测网</span>
@@ -504,16 +1037,18 @@
                         <li><a href="#tutorials" class="text-gray-400 hover:text-white transition-colors">使用教程</a></li>
                         <li><a href="#comparisons" class="text-gray-400 hover:text-white transition-colors">工具对比</a></li>
                         <li><a href="#guide" class="text-gray-400 hover:text-white transition-colors">选择指南</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="text-white text-lg font-bold mb-6">热门工具</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">ChatGPT评测</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Midjourney教程</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Claude使用指南</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">工具对比表</a></li>
+                        <li><a href="#chatgpt" class="text-gray-400 hover:text-white transition-colors">ChatGPT评测</a></li>
+                        <li><a href="#midjourney" class="text-gray-400 hover:text-white transition-colors">Midjourney教程</a></li>
+                        <li><a href="#claude" class="text-gray-400 hover:text-white transition-colors">Claude使用指南</a></li>
+                        <li><a href="#copilot" class="text-gray-400 hover:text-white transition-colors">GitHub Copilot</a></li>
+                        <li><a href="#runway" class="text-gray-400 hover:text-white transition-colors">Runway视频制作</a></li>
                     </ul>
                 </div>
                 
@@ -525,6 +1060,17 @@
                     <p class="text-gray-400 text-sm">
                         💡 我们的目标：帮助每个人找到最适合的AI工具。
                     </p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-discord text-xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -539,7 +1085,7 @@
                 <p class="text-gray-500 mt-2 text-sm">
                     <a href="about.html" class="hover:text-gray-300">关于我们</a> | 
                     <a href="privacy.html" class="hover:text-gray-300">隐私政策</a> | 
-                    <a href="#" class="hover:text-gray-300">联系我们</a>
+                    <a href="contact.html" class="hover:text-gray-300">联系我们</a>
                 </p>
             </div>
         </div>
@@ -562,7 +1108,7 @@
 
     <!-- JavaScript -->
     <script>
-        // 工具数据
+        // 工具数据 - 扩展更多工具
         const tools = {
             chatgpt: {
                 name: "ChatGPT Plus",
@@ -647,6 +1193,90 @@
                 rating: 4.8,
                 reviews: 756,
                 website: "https://claude.ai/"
+            },
+            copilot: {
+                name: "GitHub Copilot",
+                description: "微软开发的AI编程助手，集成在VS Code等编辑器中，能理解代码上下文并生成高质量的代码片段，支持多种编程语言。",
+                features: [
+                    "智能代码补全",
+                    "支持30+编程语言",
+                    "理解代码上下文",
+                    "代码重构建议",
+                    "错误检测",
+                    "集成在IDE中",
+                    "企业级安全"
+                ],
+                pros: [
+                    "编程效率提升明显",
+                    "支持语言广泛",
+                    "集成体验好",
+                    "学习曲线平缓"
+                ],
+                cons: [
+                    "有时生成不准确的代码",
+                    "需要良好的网络连接",
+                    "对复杂逻辑理解有限"
+                ],
+                bestFor: ["软件开发", "Web开发", "数据分析", "算法实现", "代码维护"],
+                rating: 4.6,
+                reviews: 1892,
+                website: "https://github.com/features/copilot"
+            },
+            notion: {
+                name: "Notion AI",
+                description: "集成在Notion知识管理平台中的AI助手，帮助写作、总结、翻译、头脑风暴，提升知识管理效率。",
+                features: [
+                    "智能写作助手",
+                    "文档总结和翻译",
+                    "头脑风暴和创意生成",
+                    "任务自动化",
+                    "知识库管理",
+                    "团队协作",
+                    "模板库丰富"
+                ],
+                pros: [
+                    "与Notion完美集成",
+                    "写作辅助功能强大",
+                    "团队协作方便",
+                    "模板资源丰富"
+                ],
+                cons: [
+                    "需要Notion订阅",
+                    "AI功能相对基础",
+                    "处理复杂任务有限"
+                ],
+                bestFor: ["知识管理", "团队协作", "内容创作", "项目管理", "学习笔记"],
+                rating: 4.5,
+                reviews: 654,
+                website: "https://www.notion.so/product/ai"
+            },
+            runway: {
+                name: "Runway",
+                description: "强大的AI视频编辑和生成平台，支持文本转视频、视频编辑、特效生成、绿幕抠像等多种专业视频制作功能。",
+                features: [
+                    "文本转视频生成",
+                    "视频编辑和特效",
+                    "绿幕抠像和合成",
+                    "运动跟踪",
+                    "3D模型生成",
+                    "音频处理",
+                    "团队协作工具"
+                ],
+                pros: [
+                    "视频生成质量高",
+                    "功能全面",
+                    "界面友好",
+                    "学习资源丰富"
+                ],
+                cons: [
+                    "价格较高",
+                    "渲染需要时间",
+                    "高级功能学习曲线陡"
+                ],
+                bestFor: ["视频制作", "广告设计", "影视特效", "社交媒体", "教育培训"],
+                rating: 4.4,
+                reviews: 432,
+                website: "https://runwayml.com/"
             }
         };
         
@@ -762,23 +1392,80 @@
             }
         });
         
-        // 搜索功能（简化版）
+        // 移动菜单切换
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // 如果是移动菜单，先关闭菜单
+                    if (window.innerWidth < 768) {
+                        document.getElementById('mobileMenu').classList.add('hidden');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 搜索功能
+        document.getElementById('searchInput')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length < 2) return;
+            
+            // 这里可以添加搜索逻辑
+            console.log('搜索:', searchTerm);
+        });
+        
+        // 页面加载完成
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('AI工具评测网 - 用户导向版本已加载');
+            console.log('AI工具评测网 - 优化版本已加载');
             console.log('我们的目标：帮助用户找到最适合的AI工具');
             console.log('核心价值：客观、实用、有价值');
             
-            // 添加简单的搜索功能
-            const searchInput = document.createElement('input');
-            searchInput.type = 'text';
-            searchInput.placeholder = '搜索AI工具...';
-            searchInput.className = 'hidden md:block px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500';
-            searchInput.style.maxWidth = '200px';
+            // 初始化工具卡片点击事件
+            document.querySelectorAll('[onclick^="showToolDetail"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const toolId = this.getAttribute('onclick').match(/showToolDetail\('(.+?)'\)/)?.[1];
+                    if (toolId) {
+                        showToolDetail(toolId);
+                    }
+                });
+            });
             
-            // 可以添加到导航栏
-            const nav = document.querySelector('nav .hidden.md\\:flex');
-            if (nav) {
-                nav.appendChild(searchInput);
+            // 添加页面加载动画
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+        
+        // 滚动时显示返回顶部按钮
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // 这里可以添加返回顶部按钮逻辑
+            if (scrollTop > 500) {
+                // 显示返回顶部按钮
             }
         });
     </script>
