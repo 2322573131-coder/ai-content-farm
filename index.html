@@ -709,8 +709,8 @@
                 </div>
                 
                 <!-- 图表容器 -->
-                <div class="h-64">
-                    <canvas id="comparisonChart"></canvas>
+                <div class="h-64 w-full">
+                    <canvas id="comparisonChart" class="w-full"></canvas>
                 </div>
                 <div class="mt-3 text-center text-sm text-gray-500">
                     📊 基于1000+用户评价和实际测试数据的多维度对比
@@ -1366,28 +1366,37 @@
                 },
                 options: {
                     maintainAspectRatio: false,
+                    aspectRatio: 2.5,
+                    responsive: true,
                     scales: {
                         r: {
                             beginAtZero: true,
                             max: 100,
                             ticks: {
                                 display: false
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12
+                                }
                             }
                         }
                     },
                     layout: {
                         padding: {
-                            top: 10,
-                            bottom: 10,
-                            left: 10,
-                            right: 10
+                            top: 5,
+                            bottom: 30,
+                            left: 20,
+                            right: 20
                         }
                     },
                     plugins: {
                         legend: {
-                            position: 'bottom',
+                            position: 'right',
+                            align: 'center',
                             labels: {
-                                padding: 15
+                                padding: 15,
+                                boxWidth: 12
                             }
                         }
                     }
