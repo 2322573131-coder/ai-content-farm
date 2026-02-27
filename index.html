@@ -441,32 +441,100 @@
                     </div>
                     
                     <div class="p-8">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <!-- 左侧：雷达图 -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- 左侧：能力评分卡片 -->
                             <div>
                                 <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                                    <i class="fas fa-radar mr-3 text-primary-600"></i>
-                                    能力雷达图
+                                    <i class="fas fa-star mr-3 text-yellow-500"></i>
+                                    ChatGPT核心优势
                                 </h4>
-                                <div class="text-sm text-gray-600 mb-3">
-                                    📊 基于1245条真实用户评价的6维度评分
-                                </div>
-                                <div class="bg-gray-50 rounded-2xl p-4">
-                                    <canvas id="chatgptRadarChart" height="220"></canvas>
+                                <div class="space-y-4">
+                                    <div class="bg-blue-50 p-4 rounded-xl">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="font-medium text-gray-800">对话和写作能力</span>
+                                            <span class="font-bold text-green-600">95%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-2">✅ 远超同类产品，写作质量非常高</p>
+                                    </div>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-xl">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="font-medium text-gray-800">多语言支持</span>
+                                            <span class="font-bold text-green-600">92%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-2">✅ 支持100+语言，翻译和理解能力强</p>
+                                    </div>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-xl">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="font-medium text-gray-800">代码生成能力</span>
+                                            <span class="font-bold text-blue-600">88%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 88%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-2">📈 代码生成质量优秀，适合开发辅助</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <!-- 右侧：柱状图 -->
+                            <!-- 右侧：特点总结 -->
                             <div>
                                 <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                                    <i class="fas fa-chart-bar mr-3 text-primary-600"></i>
-                                    性能对比
+                                    <i class="fas fa-info-circle mr-3 text-primary-600"></i>
+                                    综合评测结论
                                 </h4>
-                                <div class="text-sm text-gray-600 mb-3">
-                                    ⭐ 实际使用测试后的功能评分
-                                </div>
-                                <div class="bg-gray-50 rounded-2xl p-4">
-                                    <canvas id="chatgptBarChart" height="220"></canvas>
+                                <div class="bg-gray-50 rounded-2xl p-6 space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 mt-0.5">
+                                            <i class="fas fa-check text-green-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-gray-800">最适合人群</div>
+                                            <p class="text-sm text-gray-600">内容创作者、程序员、学生、需要通用AI助手的用户</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 mt-0.5">
+                                            <i class="fas fa-check text-green-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-gray-800">性价比</div>
+                                            <p class="text-sm text-gray-600">$20/月，功能全面，个人用户性价比很高</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 mt-0.5">
+                                            <i class="fas fa-exclamation text-yellow-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-gray-800">注意事项</div>
+                                            <p class="text-sm text-gray-600">偶尔会出现幻觉，需要验证重要信息，需要科学上网</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pt-4 border-t border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-bold text-gray-700">编辑总评</span>
+                                            <span class="text-2xl font-bold text-yellow-500">4.9/5.0</span>
+                                        </div>
+                                        <div class="text-yellow-400 text-lg mt-1">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">🏆 编辑推荐，通用AI助手的首选</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -568,32 +636,100 @@
                     </div>
                     
                     <div class="p-8">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <!-- 左侧：环形图 -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- 左侧：能力评分卡片 -->
                             <div>
                                 <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                                    <i class="fas fa-chart-pie mr-3 text-purple-600"></i>
-                                    功能分布
+                                    <i class="fas fa-palette mr-3 text-purple-600"></i>
+                                    Midjourney核心优势
                                 </h4>
-                                <div class="text-sm text-gray-600 mb-3">
-                                    📈 基于892条用户使用场景统计
-                                </div>
-                                <div class="bg-gray-50 rounded-2xl p-4">
-                                    <canvas id="midjourneyPieChart" height="220"></canvas>
+                                <div class="space-y-4">
+                                    <div class="bg-purple-50 p-4 rounded-xl">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="font-medium text-gray-800">图像生成质量</span>
+                                            <span class="font-bold text-green-600">95%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-2">✅ 目前图像生成质量行业顶级</p>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 p-4 rounded-xl">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="font-medium text-gray-800">艺术风格多样性</span>
+                                            <span class="font-bold text-green-600">92%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-2">✅ 支持上万种艺术风格，表现力极强</p>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 p-4 rounded-xl">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="font-medium text-gray-800">使用便捷度</span>
+                                            <span class="font-bold text-yellow-600">75%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-2">⚠️ 需要学习提示词技巧，通过Discord使用</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <!-- 右侧：折线图 -->
+                            <!-- 右侧：特点总结 -->
                             <div>
                                 <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                                    <i class="fas fa-chart-line mr-3 text-purple-600"></i>
-                                    版本进化趋势
+                                    <i class="fas fa-info-circle mr-3 text-purple-600"></i>
+                                    综合评测结论
                                 </h4>
-                                <div class="text-sm text-gray-600 mb-3">
-                                    🚀 各版本功能迭代和性能提升
-                                </div>
-                                <div class="bg-gray-50 rounded-2xl p-4">
-                                    <canvas id="midjourneyLineChart" height="220"></canvas>
+                                <div class="bg-gray-50 rounded-2xl p-6 space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 mt-0.5">
+                                            <i class="fas fa-check text-green-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-gray-800">最适合人群</div>
+                                            <p class="text-sm text-gray-600">设计师、艺术家、营销人员、创意工作者</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 mt-0.5">
+                                            <i class="fas fa-check text-green-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-gray-800">性价比</div>
+                                            <p class="text-sm text-gray-600">$10-60/月，按使用量计费，适合高频使用者</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 mt-0.5">
+                                            <i class="fas fa-exclamation text-yellow-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-gray-800">注意事项</div>
+                                            <p class="text-sm text-gray-600">生成人物肖像有版权风险，商业使用需要注意授权</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pt-4 border-t border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-bold text-gray-700">编辑总评</span>
+                                            <span class="text-2xl font-bold text-yellow-500">4.7/5.0</span>
+                                        </div>
+                                        <div class="text-yellow-400 text-lg mt-1">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">🎨 创意设计必备，图像生成领域首选</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -685,78 +821,127 @@
                 </div>
             </div>
             
-            <!-- 对比图表容器 -->
+            <!-- 工具对比卡片 -->
             <div class="bg-white rounded-3xl shadow-2xl p-8">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                    <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4 md:mb-0">
-                        <i class="fas fa-chart-network mr-3 text-primary-600"></i>
-                        AI工具综合对比
-                    </h3>
-                    <div class="flex items-center space-x-6">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-                            <span class="text-sm text-gray-600">ChatGPT</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
-                            <span class="text-sm text-gray-600">Midjourney</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                            <span class="text-sm text-gray-600">Claude</span>
-                        </div>
-                    </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 flex items-center">
+                    <i class="fas fa-balance-scale mr-3 text-primary-600"></i>
+                    主流AI工具直观对比
+                </h3>
+                
+                <!-- 对比表格 -->
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-gray-50 text-left">
+                                <th class="py-4 px-4 font-bold text-gray-700 rounded-tl-2xl">对比项</th>
+                                <th class="py-4 px-4 font-bold text-blue-600">ChatGPT</th>
+                                <th class="py-4 px-4 font-bold text-purple-600">Midjourney</th>
+                                <th class="py-4 px-4 font-bold text-green-600 rounded-tr-2xl">Claude</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium text-gray-700">核心功能</td>
+                                <td class="py-4 px-4 text-gray-600">全能对话AI</td>
+                                <td class="py-4 px-4 text-gray-600">AI图像生成</td>
+                                <td class="py-4 px-4 text-gray-600">长文档处理</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium text-gray-700">综合评分</td>
+                                <td class="py-4 px-4">
+                                    <div class="flex items-center">
+                                        <span class="font-bold text-yellow-500 mr-2">4.9</span>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="flex items-center">
+                                        <span class="font-bold text-yellow-500 mr-2">4.7</span>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="flex items-center">
+                                        <span class="font-bold text-yellow-500 mr-2">4.8</span>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium text-gray-700">价格</td>
+                                <td class="py-4 px-4 text-gray-600">$20/月</td>
+                                <td class="py-4 px-4 text-gray-600">$10-60/月</td>
+                                <td class="py-4 px-4 text-gray-600">$20/月</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium text-gray-700">学习难度</td>
+                                <td class="py-4 px-4">
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">简单</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">中等</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">简单</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium text-gray-700">适合人群</td>
+                                <td class="py-4 px-4 text-gray-600">所有人</td>
+                                <td class="py-4 px-4 text-gray-600">设计师/创意工作者</td>
+                                <td class="py-4 px-4 text-gray-600">专业人士/研究者</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium text-gray-700">性价比</td>
+                                <td class="py-4 px-4">
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">很高</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">中等</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">高</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 
-                <!-- 图表容器 -->
-                <div class="h-64 w-full">
-                    <canvas id="comparisonChart" class="w-full"></canvas>
-                </div>
-                <div class="mt-3 text-center text-sm text-gray-500">
-                    📊 基于1000+用户评价和实际测试数据的多维度对比
-                </div>
-                
-                <!-- 图例说明 -->
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-xl">
-                        <div class="flex items-center mb-2">
-                            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                                <i class="fas fa-comments text-blue-600"></i>
-                            </div>
-                            <span class="font-bold text-gray-800">对话能力</span>
-                        </div>
-                        <p class="text-sm text-gray-600">处理自然语言对话的质量和准确性</p>
-                    </div>
-                    
-                    <div class="bg-purple-50 p-4 rounded-xl">
-                        <div class="flex items-center mb-2">
-                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                                <i class="fas fa-palette text-purple-600"></i>
-                            </div>
-                            <span class="font-bold text-gray-800">创意生成</span>
-                        </div>
-                        <p class="text-sm text-gray-600">生成创意内容、图像、设计的质量</p>
-                    </div>
-                    
-                    <div class="bg-green-50 p-4 rounded-xl">
-                        <div class="flex items-center mb-2">
-                            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                                <i class="fas fa-code text-green-600"></i>
-                            </div>
-                            <span class="font-bold text-gray-800">技术能力</span>
-                        </div>
-                        <p class="text-sm text-gray-600">编程、数据分析等专业技术能力</p>
-                    </div>
-                    
-                    <div class="bg-yellow-50 p-4 rounded-xl">
-                        <div class="flex items-center mb-2">
-                            <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
-                                <i class="fas fa-bolt text-yellow-600"></i>
-                            </div>
-                            <span class="font-bold text-gray-800">响应速度</span>
-                        </div>
-                        <p class="text-sm text-gray-600">处理请求和生成结果的速度</p>
-                    </div>
+                <!-- 推荐建议 -->
+                <div class="mt-8 bg-blue-50 rounded-2xl p-6">
+                    <h4 class="text-xl font-bold text-gray-800 mb-3">💡 选择建议</h4>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 font-bold mr-2">•</span>
+                            <span>如果你需要<strong>通用AI助手</strong>，优先选择ChatGPT，功能最全面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 font-bold mr-2">•</span>
+                            <span>如果你主要做<strong>图像设计和创意</strong>，优先选择Midjourney，质量最好</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 font-bold mr-2">•</span>
+                            <span>如果你需要处理<strong>长文档和敏感内容</strong>，优先选择Claude，安全性最高</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
